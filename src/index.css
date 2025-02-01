@@ -1,0 +1,14 @@
+.tabs-head-wrap {
+  display: flex;
+}
+.tabs-head {
+  border: 1px solid black;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.tabs-body-wrap {
+  border: 1px solid black;
+  height: 400px;
+  padding: 10px;
+}
