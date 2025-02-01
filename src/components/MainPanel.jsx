@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Admin from "./Admin";
 import Client from "./Client";
+import Cart from "./Cart";
 
 const MainPanel = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   const tabs = [
     {
@@ -14,6 +16,10 @@ const MainPanel = () => {
     {
       name: "Client",
       component: Client,
+    },
+    {
+      name: "Cart",
+      component: Cart,
     },
   ];
   const ActiveTabComponent = tabs[activeTab].component;
@@ -32,7 +38,12 @@ const MainPanel = () => {
         ))}
       </div>
       <div className="tabs-body-wrap">
-        <ActiveTabComponent products={products} setProducts={setProducts} />
+        <ActiveTabComponent
+          products={products}
+          setProducts={setProducts}
+          cart={cart}
+          setCart={setCart}
+        />
       </div>
     </div>
   );

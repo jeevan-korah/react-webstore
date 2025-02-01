@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Admin = ({ products, setProducts }) => {
-  const [input, setInput] = useState({ name: " ", price: 0 });
+  const [input, setInput] = useState({ id: "", name: " ", price: 0 });
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -13,7 +13,7 @@ const Admin = ({ products, setProducts }) => {
 
   const handleSubmit = () => {
     setProducts((prevState) => [...prevState, input]);
-    setInput({ name: "", price: 0 });
+    setInput({ id: "", name: "", price: 0 });
   };
 
   const handleRemove = (indexToRemove) => {
@@ -29,6 +29,15 @@ const Admin = ({ products, setProducts }) => {
   return (
     <div>
       <div className="new-item">
+        <div>
+          <label>Item ID : </label>
+          <input
+            type="text"
+            name="id"
+            value={input.id}
+            onChange={handleInput}
+          />
+        </div>
         <div>
           <label>Item Name : </label>
           <input
