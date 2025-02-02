@@ -13,7 +13,7 @@ const Cart = ({
     const { value } = e.target;
     let qty = parseInt(value) || 1;
     qty < 1 ? (qty = 1) : qty;
-    qty > 10 ? (qty = 10) : qty; // max value should be 10 but is showing error
+    qty > 20 ? (qty = 20) : qty; // max value should be 10 but is showing error
 
     setCart((prevState) =>
       prevState.map((item) =>
