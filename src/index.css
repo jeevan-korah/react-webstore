@@ -8,6 +8,12 @@
   border: 1px solid black;
   padding: 5px 15px;
   cursor: pointer;
+  font-family: ClashDisplay-Regular;
+  font-weight: bold;
+}
+.tabs-head.active {
+  background-color: #2c86fd;
+  color: white;
 }
 
 .tabs-body-wrap {
