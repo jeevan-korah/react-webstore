@@ -18,7 +18,9 @@ const Admin = ({ products, setProducts }) => {
   };
 
   const handleSubmit = async () => {
-    if (!input.name.trim()) return;
+    if (!input.name.trim() || !input.id.trim() || !input.price.trim()) {
+      return;
+    }
 
     const imageUrl = await ImageFetch(input.name); // fetching image using imagesearch and returning url.
     console.log(imageUrl);
