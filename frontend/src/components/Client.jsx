@@ -25,12 +25,14 @@ const Client = ({ products, cart, setCart }) => {
                   className="item-image-com"
                 />
               </div>
-              <div className="item-content">
-                <h2>{name}</h2>
-                <p>${price}</p>
-              </div>
-              <div className="item-button">
-                <button onClick={() => updateCart(id)}>Add to cart</button>
+              <div className="item-body">
+                <div className="item-content">
+                  <h2>{name}</h2>
+                  <p>${price}</p>
+                </div>
+                <div className="item-button">
+                  <button onClick={() => updateCart(id)}>Add to cart</button>
+                </div>
               </div>
             </div>
           ))}

@@ -42,6 +42,8 @@ const Admin = ({ products, setProducts }) => {
   return (
     <div>
       <div className="new-item">
+        <h3>Enter new product data:</h3>
+        <hr />
         <div>
           <label>Item ID : </label>
           <input
@@ -70,19 +72,24 @@ const Admin = ({ products, setProducts }) => {
           />
         </div>
         <div>
-          <button type="submit" onClick={handleSubmit}>
-            Add
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="admin-add-button"
+          >
+            Add Item to Store
           </button>
         </div>
       </div>
       <div className="list-item">
         <h3>Item List</h3>
+        <hr />
         {products.length > 0 &&
           products.map(({ id, name, price }, index) => (
             <div key={index}>
               <span>{id} : </span>
               {name} - <span>{price} </span>
-              <button onClick={() => handleRemove(index)}>X</button>
+              <button onClick={() => handleRemove(index)}>Delete</button>
             </div>
           ))}
       </div>

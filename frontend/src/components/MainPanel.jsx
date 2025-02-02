@@ -7,6 +7,8 @@ const MainPanel = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [address, setAddress] = useState("");
+  const [date, setDate] = useState("");
 
   const tabs = [
     {
@@ -44,6 +46,10 @@ const MainPanel = () => {
           cart={cart}
           setCart={setCart}
           setActiveTab={setActiveTab}
+          address={address}
+          setAddress={setAddress}
+          date={date}
+          setDate={setDate}
         />
       </div>
     </div>

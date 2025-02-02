@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
-const Cart = ({ cart, setCart, setActiveTab }) => {
-  const [address, setAddress] = useState("");
-  const [date, setDate] = useState("");
+const Cart = ({
+  cart,
+  setCart,
+  setActiveTab,
+  address,
+  setAddress,
+  date,
+  setDate,
+}) => {
   const handleQuantityChange = (e, id) => {
     const { value } = e.target;
     let qty = parseInt(value) || 1;
