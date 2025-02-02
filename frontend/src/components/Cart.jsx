@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Cart = ({ cart, setCart, setActiveTab }) => {
+  const [address, setAddress] = useState("");
+  const [date, setDate] = useState("");
   const handleQuantityChange = (e, id) => {
     const { value } = e.target;
     let qty = parseInt(value) || 1;
@@ -19,14 +21,22 @@ const Cart = ({ cart, setCart, setActiveTab }) => {
   };
 
   const handleCheckout = () => {
-    if (cart.length > 0) {
-      console.log(`CHECKOUT CART: `);
-      cart.map((i) => console.log(i));
-      alert("Thank you for shopping!");
-      setCart([]);
-    } else {
-      alert("Cart empty.");
+    if (cart.length < 1) {
+      alert("Cart empty");
+      return;
     }
+    if (address.length < 2) {
+      alert("Address empty");
+      return;
+    }
+
+    console.log(`CHECKOUT CART: `);
+    cart.map((i) => console.log(i));
+    alert("Thank you for shopping!");
+    alert(`Items will be delivered to ${address}`);
+    setCart([]);
+    setDate("");
+    setAddress("");
   };
 
   return (
@@ -73,10 +83,29 @@ const Cart = ({ cart, setCart, setActiveTab }) => {
         <h2>Delivery</h2>
         <hr />
         <div className="checkout-details">
-          <p>
-            Nearest delivery date:{" "}
-            <span style={{ fontWeight: 600 }}>February 3rd, 2025</span>
-          </p>
+          <div>
+            <label>
+              Delivery date:
+              <input
+                type="date"
+                value={date}
+                className="checkout-date"
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Delivery address:{" "}
+              <input
+                type="text"
+                className="checkout-address"
+                placeholder="e.g. Akshya Nagar 1st Block"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </label>
+          </div>
           <div className="checkout-total">
             <p>Total : </p>
             <h4>

@@ -18,7 +18,7 @@
 
 .tabs-body-wrap {
   border: 1px solid black;
-  height: 90ch;
+  height: fit-content !important;
   padding: 10px;
 }
 
@@ -27,7 +27,7 @@
   border: 1px solid black;
   height: 300px;
   width: 200px;
-  background-color: rgb(253, 253, 229);
+  background-color: #f6f6f6;
   padding: 10px;
 }
 .item-list-wrapper {
@@ -71,18 +71,24 @@
 .item-button {
   display: flex;
   justify-content: center;
+
   button {
     border: none;
-    padding: 4px 30px;
-    background-color: #fccd1f;
-    font-family: ClashDisplay-Medium;
+    padding: 3px 20px;
+    background-color: #3f87fc;
+    font-family: ClashDisplay-Variable;
     font-size: 16px;
-    color: black;
-    border-radius: 10px;
+    font-weight: 400;
+    color: white;
+    border-radius: 2px;
     cursor: pointer;
+    transition: all 0.1s;
   }
   button:hover {
-    background-color: rgba(205, 160, 12, 0.788);
+    background-color: rgba(11, 63, 176, 0.788);
+  }
+  button:active {
+    transform: scale(0.9);
   }
 }
 
@@ -107,9 +113,11 @@
 }
 .checkout-list-wrapper {
   border: 1px solid black;
-  min-height: 500px;
+  max-height: fit-content;
   width: 400px;
   padding: 5px;
+  padding-bottom: 12px;
+
   h2 {
     margin: 5px 10px;
   }
@@ -210,8 +218,51 @@
     box-shadow: 1px 1px 1px 0.2px rgba(0, 0, 0, 0.358);
     cursor: pointer;
   }
+  button:hover {
+    opacity: 0.8;
+  }
+  button:active {
+    opacity: 1.2;
+  }
   button:last-child {
     color: black;
     background-color: rgb(221, 221, 221);
   }
+}
+.checkout-address {
+  width: 60%;
+  font-family: ClashDisplay-Variable;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-bottom: 0px solid black;
+}
+.checkout-address::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+}
+.checkout-address:focus {
+  border-bottom: 1px solid black;
+  outline: none;
+}
+.checkout-address:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.checkout-date {
+  font-family: ClashDisplay-Variable;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  /* border-bottom: 0px solid black; */
+}
+.checkout-date:hover {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.checkout-date:focus {
+  border-bottom: 1px solid black;
+  outline: none;
 }
