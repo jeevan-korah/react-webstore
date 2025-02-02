@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Admin from "./Admin";
 import Client from "./Client";
 import Cart from "./Cart";
-import ImageSearch from "./ImageSearch";
 
 const MainPanel = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -21,10 +20,6 @@ const MainPanel = () => {
     {
       name: "Cart",
       component: Cart,
-    },
-    {
-      name: "Image Search",
-      component: ImageSearch,
     },
   ];
   const ActiveTabComponent = tabs[activeTab].component;
@@ -48,6 +43,7 @@ const MainPanel = () => {
           setProducts={setProducts}
           cart={cart}
           setCart={setCart}
+          setActiveTab={setActiveTab}
         />
       </div>
     </div>

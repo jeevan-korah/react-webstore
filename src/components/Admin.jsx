@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import ImageFetch from "./ImageFetch";
 
 const Admin = ({ products, setProducts }) => {
-  const [input, setInput] = useState({ id: "", name: " ", price: 0 });
+  const [input, setInput] = useState({
+    id: "",
+    name: " ",
+    image: "",
+    price: 0,
+  });
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -11,9 +17,14 @@ const Admin = ({ products, setProducts }) => {
     }));
   };
 
-  const handleSubmit = () => {
-    setProducts((prevState) => [...prevState, input]);
-    setInput({ id: "", name: "", price: 0 });
+  const handleSubmit = async () => {
+    if (!input.name.trim()) return;
+
+    const imageUrl = await ImageFetch(input.name); // fetching image using imagesearch and returning url.
+    console.log(imageUrl);
+    const newProduct = { ...input, image: imageUrl };
+    setProducts((prevState) => [...prevState, newProduct]);
+    setInput({ id: "", name: "", image: "", price: 0 });
   };
 
   const handleRemove = (indexToRemove) => {
@@ -22,9 +33,9 @@ const Admin = ({ products, setProducts }) => {
     );
   };
 
-  useEffect(() => {
-    products.length > 0 && console.log("Updated Product List: ", products);
-  }, [products]);
+  // useEffect(() => {
+  //   products.length > 0 && console.log("Updated Product List: ", products);
+  // }, [products]);
 
   return (
     <div>
@@ -65,9 +76,10 @@ const Admin = ({ products, setProducts }) => {
       <div className="list-item">
         <h3>Item List</h3>
         {products.length > 0 &&
-          products.map(({ name, price }, index) => (
+          products.map(({ id, name, price }, index) => (
             <div key={index}>
-              {name} <span>{price}</span>
+              <span>{id} : </span>
+              {name} - <span>{price} </span>
               <button onClick={() => handleRemove(index)}>X</button>
             </div>
           ))}

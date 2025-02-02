@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
+import { findAllInRenderedTree } from "react-dom/test-utils";
 
-const Cart = ({ cart, setCart }) => {
+const Cart = ({ cart, setCart, setActiveTab }) => {
   const handleQuantityChange = (e, id) => {
     const { value } = e.target;
     const qty = parseInt(value) || 1;
@@ -18,6 +19,17 @@ const Cart = ({ cart, setCart }) => {
     setCart((prevState) => prevState.filter((i) => i.id != idToRemove));
   };
 
+  const handleCheckout = () => {
+    if (cart.length > 0) {
+      console.log(`CHECKOUT CART: `);
+      cart.map((i) => console.log(i));
+      alert("Thank you for shopping!");
+      setCart([]);
+    } else {
+      alert("Cart empty.");
+    }
+  };
+
   return (
     <div className="cart-container">
       <div className="cart-list-wrapper">
@@ -25,10 +37,13 @@ const Cart = ({ cart, setCart }) => {
         <hr />
         <div className="cart-list-items">
           {cart.length > 0 &&
-            cart.map(({ id, name, price, quantity }, index) => (
+            cart.map(({ id, name, price, image, quantity }, index) => (
               <div key={id} className="cart-item">
                 <div className="cart-item-image">
-                  <img src="https://placehold.co/100x100" alt="" />
+                  <img
+                    src={image ? image : "https://placehold.co/100x100"}
+                    alt=""
+                  />
                 </div>
                 <div className="cart-item-content">
                   <div className="cart-item-content-head">
@@ -53,29 +68,6 @@ const Cart = ({ cart, setCart }) => {
                 </div>
               </div>
             ))}
-
-          {/* <div className="cart-item">
-            <div className="cart-item-image">
-              <img src="https://placehold.co/100x100" alt="" />
-            </div>
-            <div className="cart-item-content">
-              <div className="cart-item-content-head">
-                <div className="cart-item-content-title">
-                  <h3>Red Bull Shoes</h3>
-                  <p>
-                    $12.99 <span>In Stock</span>
-                  </p>
-                </div>
-                <div>
-                  <h2>$12.99</h2>
-                </div>
-              </div>
-              <div className="cart-item-content-tail">
-                <input type="number" name="" id="" />
-                <button>Delete</button>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       <div className="checkout-list-wrapper">
@@ -96,8 +88,8 @@ const Cart = ({ cart, setCart }) => {
             </h4>
           </div>
           <div className="checkout-buttons">
-            <button>Proceed to Checkout</button>
-            <button>Continue Shopping</button>
+            <button onClick={handleCheckout}>Proceed to Checkout</button>
+            <button onClick={() => setActiveTab(1)}>Continue Shopping</button>
           </div>
         </div>
       </div>
